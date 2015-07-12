@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import AVFoundation
 
-class ViewController: UIViewController,UIAlertViewDelegate,AVAudioRecorderDelegate {
+class ViewController: UIViewController,AVAudioRecorderDelegate {
     var interval = 0;
     var red : CGFloat = 255;
     var green : CGFloat = 0;
@@ -26,9 +26,6 @@ class ViewController: UIViewController,UIAlertViewDelegate,AVAudioRecorderDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var alertView = UIAlertView(title: "Notice", message: "Keep your phone out to become a part of the show!", delegate: self, cancelButtonTitle: "Ok");
-        alertView.show();
-        record()
         //NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: "changeColor", userInfo: nil, repeats: true);
     }
     override func didReceiveMemoryWarning() {
@@ -105,21 +102,10 @@ class ViewController: UIViewController,UIAlertViewDelegate,AVAudioRecorderDelega
     func isHighDeci(){
         self.view.backgroundColor = UIColor.blackColor();
     }
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if buttonIndex == 0{
-            if alertView.title == "Permission"{
-                println("Second Alert View")
-                getArtistList()
-                //audioRecorder?.delegate = self;
-            } else {
-                var alertView = UIAlertView(title: "Permission", message: "Visualic would like to use your microphone", delegate: self, cancelButtonTitle: "Ok")
-                alertView.show()
-            }
-        }
-    }
     func startAudioMetering(){
         audioRecorder.updateMeters();
-        var dbLevel = audioRecorder.averagePowerForChannel(099);
+        var dbLevel = audioRecorder.averagePowerForChannel(0);
+        
         println(dbLevel)
         
     }
