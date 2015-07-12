@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>521B8A65-A29C-458F-87FC-E9725F3E2EB0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Visualizic</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>06D1BB1533CE0645CDC6ABBB128F499E2024F62D</key>
+		<string>https://github.com/marmikshah/Visualizic.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Visualizic.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>06D1BB1533CE0645CDC6ABBB128F499E2024F62D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/marmikshah/Visualizic.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>06D1BB1533CE0645CDC6ABBB128F499E2024F62D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>06D1BB1533CE0645CDC6ABBB128F499E2024F62D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Visualizic</string>
+		</dict>
+	</array>
+</dict>
+</plist>
