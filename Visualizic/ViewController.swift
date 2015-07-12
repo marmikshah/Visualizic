@@ -12,6 +12,7 @@ import AVFoundation
 
 class ViewController: UIViewController,AVAudioRecorderDelegate {
     var interval = 0;
+    var dbLevel : Float = 0;
     var red : CGFloat = 255;
     var green : CGFloat = 0;
     var blue : CGFloat = 0;
@@ -26,7 +27,9 @@ class ViewController: UIViewController,AVAudioRecorderDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: "changeColor", userInfo: nil, repeats: true);
+        record();
+        NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: "changeColor", userInfo: nil, repeats: false);
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -73,12 +76,22 @@ class ViewController: UIViewController,AVAudioRecorderDelegate {
             red--;
         }
         if(red + green + blue)%2 == 0 {
-            isHighDeci()
             green+=5;
         } else {
             self.view.backgroundColor = UIColor(red: (red)/255, green: (green++)/255, blue: (blue/255), alpha: CGFloat(1))
         }
         println("\(red)\(green)\(blue)")
+        if abs(dbLevel) < 10 {
+            NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "changeColor", userInfo: nil, repeats: false);
+            isHighDeci()
+        }
+        if abs(dbLevel) > 10 && abs(dbLevel) < 20 {
+            NSTimer.scheduledTimerWithTimeInterval(0.025, target: self, selector: "changeColor", userInfo: nil, repeats: false);
+        }
+        if abs(dbLevel) > 20 {
+            NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "changeColor", userInfo: nil, repeats: false);
+        }
+        
     }
     
     func getArtistList(){
@@ -104,7 +117,7 @@ class ViewController: UIViewController,AVAudioRecorderDelegate {
     }
     func startAudioMetering(){
         audioRecorder.updateMeters();
-        var dbLevel = audioRecorder.averagePowerForChannel(0);
+        dbLevel = audioRecorder.averagePowerForChannel(0);
         
         println(dbLevel)
         

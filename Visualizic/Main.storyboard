@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Access Mic Screen-->
+        <!--Main Scene-->
         <scene sceneID="fzg-1r-fhS">
             <objects>
-                <viewController title="Access Mic Screen" id="ukK-n0-dWl" customClass="ViewController" customModule="Visualizic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main Scene" id="ukK-n0-dWl" customClass="ViewController" customModule="Visualizic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ahM-5z-52i"/>
                         <viewControllerLayoutGuide type="bottom" id="h9L-y1-AAW"/>
@@ -16,21 +16,7 @@
                     <view key="view" contentMode="scaleToFill" id="Hdh-9v-ioW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Access Mic Screen Background" translatesAutoresizingMaskIntoConstraints="NO" id="iXc-hp-0Ef">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="600" id="D7C-pt-2aV"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="iXc-hp-0Ef" firstAttribute="top" secondItem="Hdh-9v-ioW" secondAttribute="topMargin" id="1pJ-oR-lf3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iXc-hp-0Ef" secondAttribute="trailing" constant="-16" id="Jbi-Yo-pJC"/>
-                            <constraint firstItem="h9L-y1-AAW" firstAttribute="top" secondItem="iXc-hp-0Ef" secondAttribute="bottom" id="adM-V0-5bW"/>
-                            <constraint firstItem="iXc-hp-0Ef" firstAttribute="leading" secondItem="Hdh-9v-ioW" secondAttribute="leadingMargin" constant="-16" id="pjI-JK-hX8"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xup-S2-LiY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -71,7 +57,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Access Mic Screen Background" width="374" height="667"/>
         <image name="Away Screen Background" width="375" height="667"/>
     </resources>
 </document>
