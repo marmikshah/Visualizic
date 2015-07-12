@@ -15,22 +15,60 @@ class ViewController: UIViewController,UIAlertViewDelegate,AVAudioRecorderDelega
     var red : CGFloat = 255;
     var green : CGFloat = 0;
     var blue : CGFloat = 0;
-    var audioRecorder = AVAudioRecorder();
-    
+    var audioRecorder : AVAudioRecorder!;
+    var recordSettings = [
+        AVFormatIDKey: kAudioFormatAppleLossless,
+        AVEncoderAudioQualityKey : AVAudioQuality.Max.rawValue,
+        AVEncoderBitRateKey : 320000,
+        AVNumberOfChannelsKey: 2,
+        AVSampleRateKey : 44100.0
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         var alertView = UIAlertView(title: "Notice", message: "Keep your phone out to become a part of the show!", delegate: self, cancelButtonTitle: "Ok");
         alertView.show();
-        audioRecorder.meteringEnabled = true;
-        audioRecorder.prepareToRecord();
-        startAudioMetering();
+        record()
         //NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: "changeColor", userInfo: nil, repeats: true);
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         println("Memory Overload");
     }
+    func record(){
+        
+        var audioSession:AVAudioSession = AVAudioSession.sharedInstance()
+        audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
+        audioSession.setActive(true, error: nil)
+        
+        var documents: AnyObject = NSSearchPathForDirectoriesInDomains( NSSearchPathDirectory.DocumentDirectory,  NSSearchPathDomainMask.UserDomainMask, true)[0]
+        var str =  documents.stringByAppendingPathComponent("recordTest.caf")
+        var url = NSURL.fileURLWithPath(str as String)
+        
+        var recordSettings = [AVFormatIDKey:kAudioFormatAppleIMA4,
+            AVSampleRateKey:44100.0,
+            AVNumberOfChannelsKey:1,AVEncoderBitRateKey:12800,
+            AVLinearPCMBitDepthKey:16,
+            AVEncoderAudioQualityKey:AVAudioQuality.Max.rawValue
+            
+        ]
+        
+        println("url : \(url)")
+        var error: NSError?
+        
+        audioRecorder = AVAudioRecorder(URL:url, settings: recordSettings as [NSObject : AnyObject], error: &error)
+        if let e = error {
+            println(e.localizedDescription)
+        } else {
+            audioRecorder.meteringEnabled = true;
+            audioRecorder.prepareToRecord()
+            audioRecorder.record()
+            NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "startAudioMetering", userInfo: nil, repeats: true);
+        }
+        
+        
+    }
+
     func changeColor(){
         interval++;
         if(green>200){
@@ -61,8 +99,6 @@ class ViewController: UIViewController,UIAlertViewDelegate,AVAudioRecorderDelega
             } else {
                 println("Didnt work! :(")
             }
-            
-            
         })
     }
     
@@ -83,7 +119,7 @@ class ViewController: UIViewController,UIAlertViewDelegate,AVAudioRecorderDelega
     }
     func startAudioMetering(){
         audioRecorder.updateMeters();
-        var dbLevel = audioRecorder.averagePowerForChannel(0);
+        var dbLevel = audioRecorder.averagePowerForChannel(099);
         println(dbLevel)
         
     }
