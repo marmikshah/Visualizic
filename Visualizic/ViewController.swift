@@ -21,7 +21,8 @@ class ViewController: UIViewController,UIAlertViewDelegate,AVAudioRecorderDelega
         if buttonIndex == 0{
             if alertView.title == "Permission"{
                 println("Second Alert View")
-                audioRecorder?.delegate = self;
+                getGraceNoteAPI()
+                //audioRecorder?.delegate = self;
             } else {
                 var alertView = UIAlertView(title: "Permission", message: "Visualic would like to use your microphone", delegate: self, cancelButtonTitle: "Ok")
                 alertView.show()
@@ -38,22 +39,9 @@ class ViewController: UIViewController,UIAlertViewDelegate,AVAudioRecorderDelega
     }
     func changeColor(){
         interval++;
-//        switch(interval) {
-//        case 1:
-//            self.view.backgroundColor = UIColor.redColor();
-//        case 2:
-//            self.view.backgroundColor = UIColor.greenColor();
-//        case 3:
-//            self.view.backgroundColor = UIColor.blueColor();
-//        case 4:
-//            self.view.backgroundColor = UIColor.whiteColor();
-//            interval = 0;
-//        default:
-//            self.view.backgroundColor = UIColor.blackColor();
-//        }
         if(green>200){
             blue++;
-            red--
+            red--;
         }
         if(red + green + blue)%2 == 0 {
             isHighDeci()
@@ -63,6 +51,26 @@ class ViewController: UIViewController,UIAlertViewDelegate,AVAudioRecorderDelega
         }
         println("\(red)\(green)\(blue)")
     }
+    
+    func getGraceNoteAPI(){
+        var url : String = "http://live-id-hack.elasticbeanstalk.com/api/v2/liveid/artists/"
+        var request : NSMutableURLRequest = NSMutableURLRequest()
+        request.URL = NSURL(string: url)
+        request.HTTPMethod = "GET"
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler:{ (response:NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            var error: AutoreleasingUnsafeMutablePointer<NSError?> = nil
+            let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: error) as? NSDictionary
+            if (jsonResult != nil) {
+                println("Yay!")
+                println(jsonResult)
+            } else {
+                println("Didnt work! :(")
+            }
+            
+            
+        })    }
+    
     func isHighDeci(){
         self.view.backgroundColor = UIColor.blackColor();
     }
