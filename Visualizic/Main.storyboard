@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ukK-n0-dWl">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Access Mic Screen-->
+        <scene sceneID="fzg-1r-fhS">
+            <objects>
+                <viewController title="Access Mic Screen" id="ukK-n0-dWl" customClass="ViewController" customModule="Visualizic" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ahM-5z-52i"/>
+                        <viewControllerLayoutGuide type="bottom" id="h9L-y1-AAW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hdh-9v-ioW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Access Mic Screen Background" translatesAutoresizingMaskIntoConstraints="NO" id="iXc-hp-0Ef">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="600" id="D7C-pt-2aV"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iXc-hp-0Ef" firstAttribute="top" secondItem="Hdh-9v-ioW" secondAttribute="topMargin" id="1pJ-oR-lf3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iXc-hp-0Ef" secondAttribute="trailing" constant="-16" id="Jbi-Yo-pJC"/>
+                            <constraint firstItem="h9L-y1-AAW" firstAttribute="top" secondItem="iXc-hp-0Ef" secondAttribute="bottom" id="adM-V0-5bW"/>
+                            <constraint firstItem="iXc-hp-0Ef" firstAttribute="leading" secondItem="Hdh-9v-ioW" secondAttribute="leadingMargin" constant="-16" id="pjI-JK-hX8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xup-S2-LiY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="826" y="323"/>
+        </scene>
+        <!--Away Screen-->
+        <scene sceneID="wuo-ho-Lol">
+            <objects>
+                <viewController title="Away Screen" id="1aT-fx-EAd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gcm-I3-Xke"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fzo-UR-8do"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5ux-Vb-mh8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Away Screen Background" translatesAutoresizingMaskIntoConstraints="NO" id="Qoc-NE-QIn">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="600" id="FhO-f7-nhZ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qoc-NE-QIn" firstAttribute="leading" secondItem="5ux-Vb-mh8" secondAttribute="leadingMargin" constant="-16" id="Jzl-O2-N8c"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qoc-NE-QIn" secondAttribute="trailing" constant="-16" id="KFe-Ix-qEa"/>
+                            <constraint firstItem="Fzo-UR-8do" firstAttribute="top" secondItem="Qoc-NE-QIn" secondAttribute="bottom" id="njR-uQ-0zh"/>
+                            <constraint firstItem="Qoc-NE-QIn" firstAttribute="top" secondItem="5ux-Vb-mh8" secondAttribute="topMargin" id="qwT-qP-17e"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cik-Hg-gPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="834" y="1025"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Access Mic Screen Background" width="374" height="667"/>
+        <image name="Away Screen Background" width="375" height="667"/>
+    </resources>
+</document>

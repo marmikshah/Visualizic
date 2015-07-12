@@ -15,27 +15,21 @@ class ViewController: UIViewController,UIAlertViewDelegate,AVAudioRecorderDelega
     var red : CGFloat = 255;
     var green : CGFloat = 0;
     var blue : CGFloat = 0;
-    var audioRecorder : AVAudioRecorder?;
+    var audioRecorder = AVAudioRecorder();
     
-     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if buttonIndex == 0{
-            if alertView.title == "Permission"{
-                println("Second Alert View")
-                getGraceNoteAPI()
-                //audioRecorder?.delegate = self;
-            } else {
-                var alertView = UIAlertView(title: "Permission", message: "Visualic would like to use your microphone", delegate: self, cancelButtonTitle: "Ok")
-                alertView.show()
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         var alertView = UIAlertView(title: "Notice", message: "Keep your phone out to become a part of the show!", delegate: self, cancelButtonTitle: "Ok");
         alertView.show();
-       audioRecorder = AVAudioRecorder()
+        audioRecorder.meteringEnabled = true;
+        audioRecorder.prepareToRecord();
+        startAudioMetering();
         //NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: "changeColor", userInfo: nil, repeats: true);
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        println("Memory Overload");
     }
     func changeColor(){
         interval++;
@@ -52,7 +46,7 @@ class ViewController: UIViewController,UIAlertViewDelegate,AVAudioRecorderDelega
         println("\(red)\(green)\(blue)")
     }
     
-    func getGraceNoteAPI(){
+    func getArtistList(){
         var url : String = "http://live-id-hack.elasticbeanstalk.com/api/v2/liveid/artists/"
         var request : NSMutableURLRequest = NSMutableURLRequest()
         request.URL = NSURL(string: url)
@@ -69,16 +63,31 @@ class ViewController: UIViewController,UIAlertViewDelegate,AVAudioRecorderDelega
             }
             
             
-        })    }
+        })
+    }
     
     func isHighDeci(){
         self.view.backgroundColor = UIColor.blackColor();
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 0{
+            if alertView.title == "Permission"{
+                println("Second Alert View")
+                getArtistList()
+                //audioRecorder?.delegate = self;
+            } else {
+                var alertView = UIAlertView(title: "Permission", message: "Visualic would like to use your microphone", delegate: self, cancelButtonTitle: "Ok")
+                alertView.show()
+            }
+        }
     }
-
-
+    func startAudioMetering(){
+        audioRecorder.updateMeters();
+        var dbLevel = audioRecorder.averagePowerForChannel(0);
+        println(dbLevel)
+        
+    }
+    
+    
 }
 
